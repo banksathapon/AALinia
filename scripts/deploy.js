@@ -5,10 +5,13 @@ async function main() {
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const Token = await ethers.getContractFactory("IAccount");
-  const token = await Token.deploy();
 
-  console.log("Token address:", token.address);
+  const NovusysAccount = await ethers.getContractFactory("NovusysAccount");
+  const novusysAccount = await NovusysAccount.deploy("0x0576a174D229E3cFA37253523E645A78A0C91B57");
+
+  await novusysAccount.deployed();
+
+  console.log("Token address:", novusysAccount.address);
 }
 
 main()
